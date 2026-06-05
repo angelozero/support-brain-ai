@@ -156,5 +156,3 @@ Antes de começar a Etapa 1, faça ao aluno as seguintes perguntas:
 3. Já conhece ou usou UV antes?
 4. Tem preferência por algum LLM provider para começar? (OpenAI, Anthropic, Google)
 ```
-
----
