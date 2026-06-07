@@ -6,7 +6,7 @@ that all test modules can reuse.
 
 import pytest
 
-from config.config import Settings
+from config import Settings
 
 
 @pytest.fixture

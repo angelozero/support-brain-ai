@@ -3,19 +3,27 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/llm", "src/agent", "src/eval", "src/gateway", "src/memory", "src/observability", "src/pii", "src/rag"]
+packages = [
+    "src/config",
+    "src/model",
+    "src/llm",
+    "src/prompts",
+    "src/agent",
+    "src/eval",
+    "src/gateway",
+    "src/memory",
+    "src/observability",
+    "src/pii",
+    "src/rag",
+]
 sources = ["src"]
-
-[tool.hatch.build.targets.wheel.force-include]
-"src/config.py" = "config.py"
-"src/models.py" = "models.py"
 
 [project]
 name = "support-brain-ai"
 version = "0.1.0"
 description = "AI-powered customer support platform with RAG, agents, and observability"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.12"
 dependencies = [
     "langchain>=0.3.0",
     "langchain-openai>=0.3.0",
@@ -32,7 +40,7 @@ dev = [
 ]
 
 [tool.ruff]
-target-version = "py314"
+target-version = "py312"
 line-length = 100
 src = ["src"]
 
@@ -42,6 +50,7 @@ ignore = ["ANN401"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = ["S101", "ANN"]
+"scripts/**/*.py" = ["S101", "ANN"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

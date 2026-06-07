@@ -1,0 +1,5 @@
+"""Centralized configuration for SupportBrainAI."""
+
+from .app_config import Settings, get_settings
+
+__all__ = ["Settings", "get_settings"]

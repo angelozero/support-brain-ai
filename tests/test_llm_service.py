@@ -2,9 +2,9 @@
 
 import pytest
 
-from config.config import Settings
-from llm.llm_service import LLMService
-from model.models import Conversation, Role
+from config import Settings
+from llm import LLMService
+from model import Conversation, Role
 
 
 class TestLLMServiceInit:
@@ -21,7 +21,7 @@ class TestLLMServiceInit:
         monkeypatch.setenv("API_KEY", "test-key")
 
         # Reset singleton
-        import config.config as config_mod
+        from config import app_config as config_mod
         config_mod._settings = None
 
         service = LLMService()

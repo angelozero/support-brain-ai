@@ -6,8 +6,6 @@ LangChain (OpenAI, Anthropic, Google, corporate proxies like LiteLLM, etc.).
 Architecture pattern: Port/Adapter (Hexagonal Architecture)
 - Port: LLMService defines the interface the application uses
 - Adapter: LangChain's init_chat_model/init_embeddings handle provider specifics
-
-Analogous to Spring's @Service with injected dependencies via @ConfigurationProperties.
 """
 
 from langchain.chat_models import init_chat_model
@@ -16,8 +14,8 @@ from langchain_core.embeddings import Embeddings
 from langchain_core.language_models import BaseChatModel
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 
-from config.config import Settings, get_settings
-from model.models import (
+from config import Settings, get_settings
+from model import (
     Conversation,
     LLMResponse,
     Role,

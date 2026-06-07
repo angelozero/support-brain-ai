@@ -1,6 +1,6 @@
 """Tests for shared domain models."""
 
-from model.models import (
+from model import (
     Conversation,
     LLMResponse,
     Message,

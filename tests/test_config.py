@@ -2,7 +2,7 @@
 
 import pytest
 
-from config.config import Settings
+from config import Settings
 
 
 class TestSettings:
