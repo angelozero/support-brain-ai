@@ -1,6 +1,6 @@
 """Tests for shared domain models."""
 
-from support_brain.models import (
+from model.models import (
     Conversation,
     LLMResponse,
     Message,

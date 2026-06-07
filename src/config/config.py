@@ -16,16 +16,27 @@ class Settings(BaseSettings):
     1. Variáveis de ambiente do sistema (prioridade máxima)
     2. Arquivo .env (fallback)
     3. Valores default definidos aqui (fallback final)
+
+    Provider-agnostic: suporta qualquer LLM provider (OpenAI, Anthropic,
+    proxies corporativos como LiteLLM, etc.) via model_name + api_key + base_url.
     """
 
-    # --- LLM ---
-    anthropic_api_key: str = Field(..., description="Anthropic API key")
-    default_model: str = Field(
-        default="claude-sonnet-4-20250514",
-        description="Default LLM model identifier",
+    # --- LLM Chat ---
+    model_name: str = Field(
+        ...,
+        description="LLM model identifier (e.g., 'openai:/gpt-4o-mini')",
+    )
+    model_provider: str = Field(
+        default="openai",
+        description="LangChain model provider (openai, anthropic, google, etc.)",
+    )
+    api_key: str = Field(..., description="API key for the LLM provider")
+    base_url: str | None = Field(
+        default=None,
+        description="Custom base URL for LLM API (proxies, gateways, LiteLLM)",
     )
     default_temperature: float = Field(
-        default=0.7,
+        default=0.0,
         ge=0.0,
         le=2.0,
         description="Sampling temperature for LLM responses",
@@ -34,6 +45,16 @@ class Settings(BaseSettings):
         default=4096,
         gt=0,
         description="Maximum tokens in LLM response",
+    )
+
+    # --- LLM Embeddings ---
+    embedding_model_name: str | None = Field(
+        default=None,
+        description="Embedding model identifier (e.g., 'text-embedding-3-small')",
+    )
+    embedding_provider: str = Field(
+        default="openai",
+        description="Embedding provider (openai, huggingface, cohere, etc.)",
     )
 
     # --- Application ---
