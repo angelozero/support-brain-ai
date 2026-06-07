@@ -40,7 +40,7 @@ uv run ruff format src/ tests/
 
 ## Tech Stack
 
-- **Python 3.14** with modern type hints
+- **Python 3.12** with modern type hints
 - **UV** for package management
 - **Pydantic** for validation and settings
 - **LangChain** for provider-agnostic LLM integration
